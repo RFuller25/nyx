@@ -12,7 +12,8 @@
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   # User
   users.users.rice = {
     isNormalUser = true;
@@ -25,7 +26,6 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    # Hermes deps
     uv
     python311
     nodejs_20
@@ -62,7 +62,7 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 80 443];
   };
 
   system.stateVersion = "24.11";
